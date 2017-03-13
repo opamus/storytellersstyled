@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="otsik">Upload</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="uploadForm" (ngSubmit)="upload($event)">
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea rows="5" maxlength="250" placeholder="Max 250 characters" formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item [hidden]="isImgChosen">
+      <img [src]="picture" alt="error">
+    </ion-item>
+    <ion-item>
+      <button ion-button type="button" (click)="choosePicture($event)">Choose Picture</button>
+    </ion-item>
+    <ion-item>
+      <button ion-button type="submit" [disabled]="!uploadForm.valid">Upload</button>
+    </ion-item>
+  </form>
+</ion-content>

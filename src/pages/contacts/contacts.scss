@@ -1,0 +1,89 @@
+page-contacts {
+@font-face {
+  font-family: futurabold;
+  src: url(/assets/fonts/futurabold.ttf);
+}
+@font-face {
+  font-family: helveticaneue;
+  src: url(/assets/fonts/helveticaneue.otf);
+}
+
+.otsik {
+    text-align: center;
+    font-family: futurabold;
+}
+
+.background {
+  background-color: #dddddd;
+}
+
+.header {
+  background-color: #26373a;
+  z-index: 1;
+}
+
+.nav {
+  background-color: #26373a;
+}
+
+.hamburger {
+  color: white;
+}
+
+.logo {
+  position: absolute;
+  display: block;
+  top:8px;
+  left:33%;
+  max-width:35%;
+  max-height: 38px;
+}
+
+.cardtext {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.cardtext2 {
+  font-family: futurabold;
+}
+
+.footer {
+  background-color: #26373a;
+  height: 6%;
+  color: white;
+}
+
+.toolbar-title-ios {
+  position: absolute;
+  font-family: futurabold;
+  bottom: -14px;
+  color: white;
+  font-size: 1.3em;
+  left:-35%;
+}
+.toolbar-title-md {
+  position:absolute;
+  font-family:futurabold;
+  color:white;
+  font-size:1.3em;
+}
+
+.toolbar-ios {
+  padding: 0px;
+}
+.toolbar-md {
+  padding: 0px;
+  background-color:#26373a;
+}
+.toolbar-wp {
+  padding: 0px;
+}
+.rules {
+  font-family:helveticaneue;
+  font-size:2em;
+  text-align: center;
+}
+.toolbar-background {
+  background-color: #26373a;
+}
+}

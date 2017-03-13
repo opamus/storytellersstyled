@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar class="nav">
+    <ion-item class="header">
+      <ion-title class="login" item-left *ngIf="formTongle"></ion-title>
+      <ion-title class="signup" item-left *ngIf="!formTongle">Sign Up</ion-title>
+      <button item-right ion-button (click)="switchForm()">{{ formType }}</button>
+      <img class="logo" src="/assets/images/storytimelogo.png">
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form *ngIf="formTongle" [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+
+  <form *ngIf="!formTongle" [formGroup]="signupForm" (ngSubmit)="signup()">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Retype Password</ion-label>
+      <ion-input type="password" formControlName="retype"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Full name</ion-label>
+      <ion-input placeholder="Not required" type="text" formControlName="fullname"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!signupForm.valid">Signup and Login</button>
+  </form>
+
+</ion-content>
+
+<ion-footer class="footer" padding>
+  <ion-title class="footer2">Storytime</ion-title>
+</ion-footer>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar class="nav">
+    <ion-item class="header">
+      <button class="menubutton" ion-button menuToggle>
+      <ion-icon class="hamburger"name="menu"></ion-icon>
+    </button>
+      <ion-title item-right></ion-title>
+      <button ion-button item-right (click)="logOut($event)">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+    <img class="logo" src="/assets/images/storytimelogo.png">
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background" padding>
+  <h1 class="otsik">Contact Us!</h1>
+  <p class="rules">firstname.lastname@storytime.com</p>
+</ion-content>
+
+<ion-footer class="footer" padding>
+  <ion-title class="footer2">Storytime</ion-title>
+</ion-footer>

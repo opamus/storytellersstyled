@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar class="nav">
+    <ion-item class="header">
+      <button class="menubutton" ion-button menuToggle>
+      <ion-icon class="hamburger"name="menu"></ion-icon>
+    </button>
+      <ion-title item-right></ion-title>
+      <button ion-button item-right (click)="logOut($event)">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+    <img class="logo" src="/assets/images/storytimelogo.png">
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background" padding>
+
+  <ion-searchbar class="searchy" [(ngModel)]="searchInput" (ionInput)="doSearch($event)" (ionClear)="doClear($event)">
+  </ion-searchbar>
+
+  <ion-segment [(ngModel)]="filter" color="primary">
+    <ion-segment-button value="Date" (ionSelect)="selectedDate()">
+      Date
+    </ion-segment-button>
+    <ion-segment-button value="Likes" (ionSelect)="selectedLikes()">
+      Likes
+    </ion-segment-button>
+    <ion-segment-button value="Name" (ionSelect)="selectedName()">
+      Name
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list [virtualScroll]="list" approxItemHeight="40px">
+    <ion-card *virtualItem="let card">
+      <ion-item>
+        <h2 item-left>{{card.username}}</h2>
+        <ion-note item-right>
+          <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="card.time_added" disabled="true"></ion-datetime>
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <ion-img cache="true" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (card.filename | thumbnails: 'small')" alt="audio file"></ion-img>
+        </ion-thumbnail>
+        <ion-item>
+          <h2>{{card.title}}</h2>
+          <p>{{card.description}}</p>
+        </ion-item>
+        <button ion-button clear item-right (click)="view(card)">View</button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab *ngIf="isScrollUp" bottom center>
+    <button ion-fab mini (click)=goUp($event)><ion-icon name="arrow-up"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer class="footer" padding>
+  <ion-title class="footer2">Storytime Archive</ion-title>
+</ion-footer>

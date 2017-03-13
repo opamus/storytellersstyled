@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>player</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img *ngIf="cardData.media_type === 'image'" [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + (cardData.filename | thumbnails: 'medium')">
+  <audio controls loop *ngIf="cardData.media_type === 'audio'">
+    <source [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + cardData.filename" [type]="cardData.mime_type">
+  </audio>
+  <video controls *ngIf="cardData.media_type === 'video'">
+    <source [src]="'http://media.mw.metropolia.fi/wbma/uploads/' + cardData.filename" [type]="cardData.mime_type">
+  </video>
+  <ion-item>
+    <h1 item-left>{{cardData.title}}</h1>
+    <h2 item-right>{{cardData.username}}</h2>
+  </ion-item>
+  <ion-item>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="cardData.time_added" disabled="true"></ion-datetime>
+    </ion-item>
+  <ion-item text-wrap>
+    {{cardData.description}}
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)=postLike($event) *ngIf="!alreadyLiked">
+        <ion-icon name="heart"></ion-icon>
+        <div>{{cardData.likes.length}}</div>
+      </button>
+      <button ion-button icon-left clear small color="danger" (click)=undoLike($event) *ngIf="alreadyLiked">
+        <ion-icon name="heart"></ion-icon>
+        <div>{{cardData.likes.length}}</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-card *ngFor="let comment of cardData.comments">
+    <ion-item>
+      <ion-datetime item-left displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="comment.time_added" disabled="true"></ion-datetime>
+    </ion-item>
+    <ion-item text-wrap>
+      {{comment.comment}}
+    </ion-item>
+  </ion-card>
+</ion-content>

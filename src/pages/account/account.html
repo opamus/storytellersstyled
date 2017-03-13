@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar class="nav">
+    <ion-item class="header">
+      <button class="menubutton" ion-button menuToggle>
+      <ion-icon class="hamburger"name="menu"></ion-icon>
+    </button>
+      <ion-title item-right></ion-title>
+      <button ion-button item-right (click)="logOut($event)">
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+    <img class="logo" src="/assets/images/storytimelogo.png">
+    </ion-item>
+  </ion-navbar>
+</ion-header>
+<!--
+<form [formGroup]="todo" (ngSubmit)="logForm()">
+  <ion-item>
+    <ion-label>Todo</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+  <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+</form>-->
+
+<ion-content class="background" padding>
+  <form [formGroup]="accountForm" (ngSubmit)="modifyAccount()">
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input item-right type="text" formControlName="username"></ion-input>
+      <button type="button" ion-button item-right clear small (click)="modify('username')">
+        <ion-icon [name]="icon[0]"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input item-right type="email" formControlName="email"></ion-input>
+      <button type="button" ion-button item-right clear small (click)="modify('email')">
+        <ion-icon [name]="icon[1]"></ion-icon>
+      </button>
+    </ion-item>
+    <button class="submitbut" ion-button type="submit" [disabled]="!accountForm.valid">Submit</button>
+  </form>
+</ion-content>
+
+<ion-footer class="footer" padding>
+  <ion-title class="footer2">Account Management</ion-title>
+</ion-footer>
